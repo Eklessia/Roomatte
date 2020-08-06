@@ -2,8 +2,9 @@ package cl.malditosnakamas.persistenciadedatos.main
 
 import android.content.Context
 import android.content.SharedPreferences
+import javax.inject.Inject
 
-class MainPreferences {
+class MainPreferences @Inject constructor() {
 
     companion object {
         const val NAME_SHARED_PREF_FILE = "configuracion"

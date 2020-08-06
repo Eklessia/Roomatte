@@ -4,8 +4,9 @@ import androidx.fragment.app.FragmentManager
 import cl.malditosnakamas.persistenciadedatos.R
 import cl.malditosnakamas.persistenciadedatos.bienvenida.BienvenidaFragment
 import cl.malditosnakamas.persistenciadedatos.home.HomeFragment
+import javax.inject.Inject
 
-class MainNavigator {
+class MainNavigator @Inject constructor() {
 
     fun goToBienvenida(fragmentManager: FragmentManager) {
         val fragment =

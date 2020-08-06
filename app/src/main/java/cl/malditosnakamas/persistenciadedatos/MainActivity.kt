@@ -4,11 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import cl.malditosnakamas.persistenciadedatos.main.MainNavigator
 import cl.malditosnakamas.persistenciadedatos.main.MainPreferences
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainNavigator = MainNavigator()
-    private val mainPreferences = MainPreferences()
+    @Inject lateinit var mainNavigator : MainNavigator
+    @Inject lateinit var mainPreferences : MainPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

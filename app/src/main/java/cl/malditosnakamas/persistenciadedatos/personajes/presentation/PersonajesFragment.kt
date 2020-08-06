@@ -2,6 +2,7 @@ package cl.malditosnakamas.persistenciadedatos.personajes.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cl.malditosnakamas.persistenciadedatos.R
@@ -23,14 +24,11 @@ class PersonajesFragment : Fragment(R.layout.fragment_personajes) {
     lateinit var mapperPersonajes: PersonajesMapper
     lateinit var mapperPersonaje: PersonajeMapper
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        view?.let { safeView ->
-            setupDependencies()
-            binding = FragmentPersonajesBinding.bind(safeView)
-            callObtenerPersonajesUseCase()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentPersonajesBinding.bind(view)
+        setupDependencies()
+        callObtenerPersonajesUseCase()
     }
 
     @SuppressLint("CheckResult")
@@ -38,10 +36,10 @@ class PersonajesFragment : Fragment(R.layout.fragment_personajes) {
         obtenerPersonajesUseCase.execute()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                result -> handleResult(result)
-            },{
-                error -> handleError(error)
+            .subscribe({ result ->
+                handleResult(result)
+            }, { error ->
+                handleError(error)
             })
     }
 
