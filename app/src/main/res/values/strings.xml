@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PersistenciaDeDatos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="esto_es_una_bienvenida">Esto es una bienvenida</string>
+    <string name="esto_es_el_home">Esto es el Home</string>
+    <string name="ir_a">Ir A</string>
+    <string name="esto_es_otro_fragment">Esto es otro fragment</string>
+    <string name="esto_es_personajes">Esto es personajes</string>
+</resources>
