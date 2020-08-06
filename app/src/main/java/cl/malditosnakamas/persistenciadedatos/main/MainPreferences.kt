@@ -14,12 +14,12 @@ class MainPreferences {
         return context.getSharedPreferences(NAME_SHARED_PREF_FILE, Context.MODE_PRIVATE)
     }
 
-    fun isFirstOpenApp(context: Context): Boolean {
+    fun isFirstOpenApplicartion(context: Context): Boolean {
         return getSharedPreferencesMain(context)
             .getBoolean(IS_FIRST_OPEN_APP, true)
     }
 
-    fun saveOpenApplication(context: Context) {
+    fun saveFirstOpenApplication(context: Context) {
         val editPreferences = getSharedPreferencesMain(context).edit()
         editPreferences.putBoolean(IS_FIRST_OPEN_APP, false)
         editPreferences.apply()

@@ -1,6 +1,7 @@
 package cl.malditosnakamas.persistenciadedatos.personajes.data.local.mapper
 
 import cl.malditosnakamas.persistenciadedatos.personajes.data.local.database.PersonajeEntity
+import cl.malditosnakamas.persistenciadedatos.personajes.domain.model.Personaje
 import cl.malditosnakamas.persistenciadedatos.personajes.domain.model.Personajes
 
 class PersonajesMapper(
@@ -13,5 +14,9 @@ class PersonajesMapper(
                 personajeMapper.mapRoomToDomain(personajeEntity)
             }
         )
+    }
+
+    fun mapDomainToRoom(personaje: Personaje) : PersonajeEntity{
+        return PersonajeEntity(personaje.id, personaje.name, personaje.image)
     }
 }

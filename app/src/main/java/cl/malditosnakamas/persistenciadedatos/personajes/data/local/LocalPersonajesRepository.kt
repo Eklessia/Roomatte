@@ -5,7 +5,9 @@ import androidx.room.Room
 import cl.malditosnakamas.persistenciadedatos.personajes.data.local.database.PersonajeDataBase
 import cl.malditosnakamas.persistenciadedatos.personajes.data.local.mapper.PersonajesMapper
 import cl.malditosnakamas.persistenciadedatos.personajes.domain.PersonajesRepository
+import cl.malditosnakamas.persistenciadedatos.personajes.domain.model.Personaje
 import cl.malditosnakamas.persistenciadedatos.personajes.domain.model.Personajes
+import io.reactivex.Completable
 import io.reactivex.Single
 
 class LocalPersonajesRepository(
@@ -19,14 +21,14 @@ class LocalPersonajesRepository(
     ).build()
 
     override fun getAll(): Single<Personajes> {
-        return Single.just(
-            personajesMapper.mapRoomToDomain(
-                db.personajesDao().getAll()
-            )
-        )
+        return db.personajesDao().getAll().map { list ->
+            personajesMapper.mapRoomToDomain(list)
+        }
     }
 
-    override fun saveAll(personajes: Personajes) {
-        TODO("Not yet implemented")
+    override fun save(personaje: Personaje) {
+        Completable.fromAction {
+            db.personajesDao().insert(personajesMapper.mapDomainToRoom(personaje))
+        }.subscribe()
     }
 }

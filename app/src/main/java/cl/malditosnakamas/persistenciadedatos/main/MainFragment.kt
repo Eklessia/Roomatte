@@ -13,9 +13,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (mainPreferences.isFirstOpenApp(requireContext())) {
+        if (mainPreferences.isFirstOpenApplicartion(requireContext())) {
             Toast.makeText(requireContext(), "Es first open", Toast.LENGTH_SHORT).show()
-            mainPreferences.saveOpenApplication(requireContext())
+            mainPreferences.saveFirstOpenApplication(requireContext())
         }
     }
 }
